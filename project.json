@@ -1,0 +1,94 @@
+{
+  "name": "equipment-invicta",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "packages/modules/equipment-invicta/src",
+  "prefix": "app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/equipment-invicta",
+        "index": "packages/modules/equipment-invicta/src/index.html",
+        "main": "packages/modules/equipment-invicta/src/main.ts",
+        "polyfills": "packages/modules/equipment-invicta/src/polyfills.ts",
+        "tsConfig": "packages/modules/equipment-invicta/tsconfig.app.json",
+        "assets": [
+          "packages/modules/equipment-invicta/src/favicon.ico",
+          "packages/modules/equipment-invicta/src/assets"
+        ],
+        "styles": ["packages/modules/equipment-invicta/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "packages/modules/equipment-invicta/src/environments/environment.ts",
+              "with": "packages/modules/equipment-invicta/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "equipment-invicta:build:production"
+        },
+        "development": {
+          "browserTarget": "equipment-invicta:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "equipment-invicta:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/modules/equipment-invicta/**/*.ts",
+          "packages/modules/equipment-invicta/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/modules/equipment-invicta/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
