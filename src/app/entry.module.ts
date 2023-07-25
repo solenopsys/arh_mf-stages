@@ -3,13 +3,21 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {RouterModule} from '@angular/router';
+import {HttpClientModule} from "@angular/common/http";
+import {StagesComponent} from "../stages/stages.component";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
-  declarations: [],
+  declarations: [StagesComponent],
   imports: [
-    BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
+    CommonModule,
+    HttpClientModule,
+    RouterModule.forChild([{
+      path: "",
+      component: StagesComponent,
+    }]),
   ],
-  providers: []
+  providers: [],
 })
+
 export class RemoteEntryModule {}
