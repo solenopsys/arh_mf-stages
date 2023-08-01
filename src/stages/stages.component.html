@@ -1,23 +1,13 @@
-<div *ngIf="statges$| async; let  statges">
-
-
-
-
-
-
+<div *ngIf="$stages | async; let  stages">
 
     <h3>Basic stages:</h3>
     <ol>
 
-        <li *ngFor="let stage of statges">{{stage.name}}</li>
+        <li *ngFor="let stage of stages">{{stage.name}}</li>
 
     </ol>
 
-
-
-
-
-    <div *ngFor="let stage of statges">
+    <div *ngFor="let stage of stages">
         <h2>{{stage.name}}</h2>
         {{stage.target}}
         <ul>
