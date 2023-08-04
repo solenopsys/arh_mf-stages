@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-import {DataLoadRequest, HideComponent, MenuLoaderProvider, MenuLoaderService} from "@solenopsys/ui-templates";
+import {HideComponent, MenuLoaderProvider, MenuLoaderService} from "@solenopsys/ui-templates";
 import {Store} from "@ngxs/store";
 import {GroupService} from "@solenopsys/ui-publications";
 import {MenuItemData} from "@solenopsys/ui-navigate";
@@ -10,7 +10,9 @@ import {MenuItemData} from "@solenopsys/ui-navigate";
 
 type Stage = {
     name: string,
-    id:string
+    id:string,
+    target?: string
+    modules?: { name:string }[]
 }
 
 class StagesProvider implements MenuLoaderProvider {
